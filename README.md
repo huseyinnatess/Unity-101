@@ -1,22 +1,61 @@
-# YAPILAN DEĞİŞİKLİKLER
+## **Yapılan Değişiklikler**
 
-## 1- Klasörleme
-- İlerleyen süreçlerde eklenecek yeni dosyalar arasında kaybolmamak, istenilen dosyayı hızlıca bulabilmek ve düzenli görünmesini sağlamak amacıyla klasörlemeye oldukça dikkat ettin.
+### **1. Klasörleme**
+Projede düzenli bir yapı oluşturmak ve ilerleyen süreçlerde eklenecek yeni dosyalar arasında kaybolmamak için klasörleme yapısına büyük önem verdim. Bu sayede:
+- Gerekli dosyalar hızlıca bulunabilir.
+- Kod düzeni ve okunabilirlik artırıldı.
 
-## 2- Dessign Patternler'den MonoSingleton ve Command Pattern
-- Dessign patternleri kullanarak kod karmaşıklığını olabildiğince azaltıp modüler bir yapı kurmaya çalıştım
+---
 
-## 3- Event kullanımı
-- Unity action kullanarak farklı class'lar arasında çalışan fonksiyonlar'da herhangi bir sorun (örneğin null) olması durumunda hata almayıp bağımlılıkları önledim.
+### **2. Design Patterns (Tasarım Kalıpları)**
+Projede aşağıdaki tasarım kalıpları kullanılmıştır:
+- **MonoSingleton**
+- **Command Pattern**
 
-# Ekstra Eklemelerim 
-Kodları yazarken modüler şekilde ilerlemeye gayret ettim. Her class'ı, fonksiyonu amacı dahilinde kullanmaya çalıştım. İzlediğim yol ise şu şekildedir.
+Bu kalıplar sayesinde:
+- Kod karmaşıklığı azaltılmıştır.
+- Modüler ve genişletilebilir bir yapı oluşturulmuştur.
 
-- Manager'larda işlem yapılmaz adı üstünde yöneticidir. Görevi sadece görev dağılımı yapmaktır. Burada ise devreye Controller'lar veya duruma göre Command'ler (Benim tanımım ile çalışan, işçiler) girmektedir.
-- İşçiler, yöneticiden ne yapacakları konusunda emir alır. Bunun koddaki karşılığı ise SubscribeEvents'dir. Manager'lar burada işçilere gereken görev dağılımını yapar. 
-- Ardından işçiler bu görevi yapmak için araç,gereçlere ihtiyaç duyar. Burada ise devreye Signals(Sinyaller) girer. Manager gereken Signal'ı gerekli işçiye bağlar işçi ise bunu kullanarak o işi yapar.
-- Günün sonunda ise bu araç, gereçleri teslim edip (UnsubscriveEvents) bir sonraki gün için hazırlanırlar.
+---
 
-Birazcık hikaye gibi oldu ancak biraz karışık bir yapı gibi görünüyor. Kullanım mantığını bu şekilde açıklamak istedim.
-Kodların tamamını elden geçiremedim zamanım kalmadı ne yazık ki.
-  
+### **3. Event Kullanımı**
+Unity’nin **Action** yapısı kullanılarak farklı sınıflar arasında haberleşme sağlanmıştır. Bu yaklaşım:
+- Bağımlılıkları önler.
+- Null referans hatalarını engeller.
+- Daha esnek bir yapı sunar.
+
+---
+
+## **Proje Yapısı ve Çalışma Prensibi**
+
+Projede her sınıf ve fonksiyon, yalnızca kendi sorumluluğunu yerine getirecek şekilde tasarlanmıştır. Yapı şu şekilde çalışır:
+
+1. **Manager (Yöneticiler):**
+   - **Görevi:** Sadece görev dağılımını yapmak.
+   - Manager'lar herhangi bir işlem yapmaz. Sorumluluğu, görevleri ilgili sınıflara iletmektir.
+
+2. **Controller ve Command (İşçiler):**
+   - **Görevi:** Manager tarafından verilen görevleri yerine getirmek.
+   - İşçiler, görevlerini gerçekleştirmek için gerekli araç ve sinyalleri kullanır.
+
+3. **Signals (Sinyaller):**
+   - **Görevi:** İşçiler ve Manager arasında bağlantı kurmak.
+   - Manager, uygun sinyali işçilere bağlar. İşçiler ise bu sinyali kullanarak görevlerini tamamlar.
+
+4. **Event Yönetimi:**
+   - Manager, görev dağıtımı sonrası **SubscribeEvents** yöntemi ile olayları dinler.
+   - Görev tamamlandığında **UnsubscribeEvents** ile sistem temizlenir ve bir sonraki göreve hazırlanır.
+
+---
+
+## **Hikaye ile Anlatım**
+
+Manager'lar, işçilere görev verir. İşçiler, bu görevleri gerçekleştirmek için gerekli sinyalleri kullanır. Görev tamamlandığında işçiler araçlarını teslim eder ve bir sonraki görev için hazır hale gelirler. Bu döngü şu şekilde işler:
+- **Manager**: Görev dağıtımı yapar.
+- **Command**: Görevi yerine getirir.
+- **Signal**: İletişimi sağlar.
+- **Event Yönetimi**: Sistem hazırlığını yapar.
+
+---
+
+Hepsini düzenlemeye zamanım olmadı ne yazık ki.
