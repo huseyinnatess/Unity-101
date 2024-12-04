@@ -58,4 +58,9 @@ Manager'lar, işçilere görev verir. İşçiler, bu görevleri gerçekleştirme
 
 ---
 
+## **Object Pooling Yapısı**
+
+Object Pooling yapısında, temel olarak ana fonksiyonların bulunduğu bir base class ve IPoolable arayüzü (interface) kullanılarak oluşturulan sınıflar yer almaktadır.
+Interface kullanımının amacı, polymorphism (çok biçimlilik) sağlayarak base class bağımlılığından kurtulmaktır. Bu sayede, farklı nesneler için aynı fonksiyonları tekrar tekrar yazmadan, modüler bir şekilde kullanılabilir bir yapı oluşturulmuştur.
+
 Hepsini düzenlemeye zamanım olmadı ne yazık ki.
