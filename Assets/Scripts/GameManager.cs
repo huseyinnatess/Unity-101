@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,45 +6,46 @@ public class GameManager : MonoBehaviour
 {
     public Text gameText;
     public GameObject targetContainer;
-    private int targetsToDestroy;
-    private float gameTimer;
-    private bool isGameOver;
+    private int _targetsToDestroy;
+    private float _gameTimer;
+    private bool _isGameOver;
 
-    private TargetController[] targets;
-        void Start()
+    private TargetController[] _targets;
+
+    private void Start()
     {
-        targets = targetContainer.GetComponentsInChildren<TargetController>();
-        targetsToDestroy = targets.Length;
+        _targets = targetContainer.GetComponentsInChildren<TargetController>();
+        _targetsToDestroy = _targets.Length;
 
-        foreach (TargetController target in targets){
+        foreach (TargetController target in _targets){
             target.onTargetDestroyed = () => {
                 OnTargetDestroyed();
             };
         }
     }
 
-    void OnTargetDestroyed(){
-        targetsToDestroy--;
+    private void OnTargetDestroyed(){
+        _targetsToDestroy--;
 
-        if(targetsToDestroy == 0){
-            isGameOver = true;
+        if(_targetsToDestroy == 0){
+            _isGameOver = true;
             gameText.text = "You Won!..";
         }
     }
 
-    void Update()
+    private void Update()
     {
         if(Input.GetKeyDown("n")){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if(!isGameOver){
+        if(!_isGameOver){
             gameText.text = "Shoot The Targets!";
-            gameText.text += "\nTime: " + Mathf.Floor(gameTimer);
-            gameTimer += Time.deltaTime;
+            gameText.text += "\nTime: " + Mathf.Floor(_gameTimer);
+            _gameTimer += Time.deltaTime;
         }else{
             gameText.text = "You Won!";
-            gameText.text += "\nYour Time: " + Mathf.Floor(gameTimer);
+            gameText.text += "\nYour Time: " + Mathf.Floor(_gameTimer);
         }
     }
 }

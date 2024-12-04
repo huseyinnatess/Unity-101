@@ -24,10 +24,10 @@ public class TargetController : MonoBehaviour
             GameObject.Destroy(this.gameObject);
             onTargetDestroyed();
         }
-        if(other.gameObject.GetComponent<BulletController>() !=null){
-            GameObject.Destroy (this.gameObject);
-            GameObject.Destroy(other.gameObject);
-            onTargetDestroyed();
-        }
+        // if(other.gameObject.GetComponent<BulletController>() !=null){
+        //     GameObject.Destroy (this.gameObject);
+        //     GameObject.Destroy(other.gameObject);
+        //     onTargetDestroyed();
+        // }
     }
 }
