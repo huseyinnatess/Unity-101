@@ -17,7 +17,6 @@ Kodları yazarken modüler şekilde ilerlemeye gayret ettim. Her class'ı, fonks
 - Ardından işçiler bu görevi yapmak için araç,gereçlere ihtiyaç duyar. Burada ise devreye Signals(Sinyaller) girer. Manager gereken Signal'ı gerekli işçiye bağlar işçi ise bunu kullanarak o işi yapar.
 - Günün sonunda ise bu araç, gereçleri teslim edip (UnsubscriveEvents) bir sonraki gün için hazırlanırlar.
 
-- Birazcık hikaye gibi oldu ancak biraz karışık bir yapı gibi görünüyor. Kullanım mantığını bu şekilde açıklamak istedim.
-
+Birazcık hikaye gibi oldu ancak biraz karışık bir yapı gibi görünüyor. Kullanım mantığını bu şekilde açıklamak istedim.
 Kodların tamamını elden geçiremedim zamanım kalmadı ne yazık ki.
   
